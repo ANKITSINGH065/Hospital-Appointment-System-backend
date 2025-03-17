@@ -5,6 +5,9 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const appointmentRoutes = require('./routes/appointment');
 
+
+require('dotenv').config();
+
 const app = express();
 
 // Middleware
@@ -12,7 +15,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://ankitsingh080115:GNTKtacTRPxxDNBf@cluster0.dlf4j8u.mongodb.net/hospital-appointment-system?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
